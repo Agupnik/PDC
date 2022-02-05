@@ -31,7 +31,8 @@ public class BounceFrame extends JFrame {
 
         JButton buttonStart = new JButton("Start");
         JButton buttonRedVsBlue = new JButton("Red VS Blue");
-        JButton buttonJoinDemo = new JButton("Join Demonstration");
+        JButton buttonRedAndBlue = new JButton("Red And Blue");
+        JButton buttonJoinDemo = new JButton("Join");
         JButton buttonStop = new JButton("Stop");
         buttonStart.addActionListener(new ActionListener() {
             @Override
@@ -94,8 +95,24 @@ public class BounceFrame extends JFrame {
                 }
             }
         });
+        buttonRedAndBlue.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                for(int i = 0; i < 100; i++){
+                    Ball b1 = new Ball(canvas, xPocketsArray, yPocketsArray, Priority.High);
+                    Ball b2 = new Ball(canvas, xPocketsArray, yPocketsArray, Priority.Low);
+                    BallThread thread1 = new BallThread(b1);
+                    BallThread thread2 = new BallThread(b2);
+                    canvas.add(b1);
+                    canvas.add(b2);
+                    thread1.start();
+                    thread2.start();
+                }
+            }
+        });
         buttonPanel.add(buttonStart);
         buttonPanel.add(buttonStop);
+        buttonPanel.add(buttonRedAndBlue);
         buttonPanel.add(buttonRedVsBlue);
         buttonPanel.add(buttonJoinDemo);
 

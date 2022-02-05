@@ -18,7 +18,7 @@ public class PrinterSync implements IPrinter {
             }
             System.out.print(character);
             characterCount++;
-            if (characterCount % 10 == 0) {
+            if (characterCount % 50 == 0) {
                 System.out.print('\n');
             }
             currentCharacter = character;

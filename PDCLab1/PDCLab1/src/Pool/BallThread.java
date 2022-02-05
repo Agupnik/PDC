@@ -18,7 +18,6 @@ public class BallThread extends Thread {
     private int getBallPriority(Ball ball)
     {
         Priority priority = ball.priority;
-
         return priority == Priority.Low ? 4 : MAX_PRIORITY;
     }
     @Override

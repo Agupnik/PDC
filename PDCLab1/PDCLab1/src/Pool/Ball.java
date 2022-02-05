@@ -40,8 +40,19 @@ class Ball {
 
     public Ball(BallCanvas c, int[] xPocketsArray, int[] yPocketsArray, Priority priority) {
         this(c, xPocketsArray, yPocketsArray);
-        x = this.canvas.getWidth()/3 - 60;
-        y = this.canvas.getHeight()/3 - 60;
+        this.priority = priority;
+        if(priority == Priority.High){
+            color = Color.RED;
+        }
+        else if(priority == Priority.Low){
+            color = Color.BLUE;
+        }
+    }
+
+    public Ball(BallCanvas c, int[] xPocketsArray, int[] yPocketsArray, Priority priority, int x, int y) {
+        this(c, xPocketsArray, yPocketsArray);
+        this.x = x;
+        this.y = y;
         this.priority = priority;
         if(priority == Priority.High){
             color = Color.RED;
@@ -60,10 +71,12 @@ class Ball {
         ArrayList<Ball> balls = new ArrayList<>();
 
         for (int i = 0; i < lowPriorityCount; i++){
-            balls.add(new Ball(c, xPocketsArray, yPocketsArray, Priority.Low));
+            balls.add(new Ball(c, xPocketsArray, yPocketsArray, Priority.Low,
+                    c.getWidth()/3 - 60, c.getHeight()/3 - 60));
         }
         for (int i = 0; i < highPriorityCount; i++){
-            balls.add(new Ball(c, xPocketsArray, yPocketsArray, Priority.High));
+            balls.add(new Ball(c, xPocketsArray, yPocketsArray, Priority.High,
+                    c.getWidth()/3 - 60, c.getHeight()/3 - 60));
         }
         return balls;
     }

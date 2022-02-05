@@ -1,6 +1,7 @@
 package Counter;
 
-public class IncrementThread extends Thread{
+public class IncrementThread extends Thread
+{
     private final Counter counter;
     private final int numberOfOperations;
 
